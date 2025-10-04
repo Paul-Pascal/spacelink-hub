@@ -22,7 +22,7 @@
 
   <script>
     
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMmE4MzRlZC02NmUyLTRkOWEtOGNjYi05ZTBjYjk1ZjVkY2EiLCJpZCI6MzQ3MTM4LCJpYXQiOjE3NTk1ODQ1NTV9.6xTHZBxVjrekqojVKnhoRaB0LsItaeNGacn1hxiEc2A';
+    Cesium.Ion.defaultAccessToken = 'YOUR_CESIUM_TOKEN_HERE';
 
     // viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
@@ -171,11 +171,12 @@
       }
     });
 
-    // 🎯 Zoom to Africa
+    // Zoom to Africa
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(20, 5, 8000000),
       duration: 2
     });
   </script>
 </body>
+
 </html>
