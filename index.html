@@ -22,7 +22,7 @@
 
   <script>
     
-    Cesium.Ion.defaultAccessToken = 'YOUR_CESIUM_TOKEN_HERE';
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMmE4MzRlZC02NmUyLTRkOWEtOGNjYi05ZTBjYjk1ZjVkY2EiLCJpZCI6MzQ3MTM4LCJpYXQiOjE3NTk1ODQ1NTV9.6xTHZBxVjrekqojVKnhoRaB0LsItaeNGacn1hxiEc2A';
 
     // viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
@@ -37,6 +37,7 @@
       
     });
 
+  
     //  Auto-rotate 
     viewer.clock.onTick.addEventListener(() => {
       viewer.scene.camera.rotate(Cesium.Cartesian3.UNIT_Z, -0.0003);
@@ -105,38 +106,38 @@
     });
 
     // Moon
-    const moonPos = Cesium.Cartesian3.fromDegrees(-30, -20, 500000000); // scaled distance
-    viewer.entities.add({
-      position: moonPos,
-      billboard: {
-        image: 'https://cesium.com/public/Assets/Moon.png',
-        scale: 0.5,
-        heightReference: Cesium.HeightReference.NONE
-      },
-      label: {
-        text: '🌕 Moon\n(Sample Source)',
-        font: '12px sans-serif',
-        fillColor: Cesium.Color.WHITE,
-        pixelOffset: new Cesium.Cartesian2(0, -40)
-      }
-    });
-
+const moonPos = Cesium.Cartesian3.fromDegrees(-30, -20, 20000000); 
+viewer.entities.add({
+  position: moonPos,
+  model: {
+    uri: 'models/moon.glb',     
+    scale: 5.0,                 
+    minimumPixelSize: 120       
+  },
+  label: {
+    text: '🌕 Moon\n(Sample Source)',
+    font: '13px sans-serif',
+    fillColor: Cesium.Color.WHITE,
+    pixelOffset: new Cesium.Cartesian2(0, -50)
+  }
+});
+   
     // Mars
-    const marsPos = Cesium.Cartesian3.fromDegrees(60, 15, 800000000);
-    viewer.entities.add({
-      position: marsPos,
-      billboard: {
-        image: 'https://cesium.com/public/Assets/Mars.png',
-        scale: 0.4,
-        heightReference: Cesium.HeightReference.NONE
-      },
-      label: {
-        text: '🪐 Mars\n(Future Resource)',
-        font: '11px sans-serif',
-        fillColor: Cesium.Color.ORANGE,
-        pixelOffset: new Cesium.Cartesian2(0, -35)
-      }
-    });
+const marsPos = Cesium.Cartesian3.fromDegrees(60, 15, 50000000); 
+viewer.entities.add({
+  position: marsPos,
+  model: {
+    uri: 'models/mars.glb',  
+    scale: 5,         
+    minimumPixelSize: 80     
+  },
+  label: {
+    text: '🪐 Mars\n(Future Resource)',
+    font: '12px sans-serif',
+    fillColor: Cesium.Color.ORANGE,
+    pixelOffset: new Cesium.Cartesian2(0, -50)
+  }
+});
 
     // Paths: Moon → Hub, Mars → Hub, Hub → Uganda
     viewer.entities.add({
@@ -171,12 +172,11 @@
       }
     });
 
-    // Zoom to Africa
+    // 🎯 Zoom to Africa
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(20, 5, 8000000),
       duration: 2
     });
   </script>
 </body>
-
 </html>
