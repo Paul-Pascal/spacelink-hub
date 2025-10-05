@@ -26,6 +26,8 @@
 
     // viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
+      imageryProvider: new Cesium.TileMapServiceImageryProvider({
+        url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')}),
       shouldAnimate: true,
       timeline: false,
       animation: false,
@@ -180,6 +182,7 @@ viewer.entities.add({
   </script>
 </body>
 </html>
+
 
 
 
