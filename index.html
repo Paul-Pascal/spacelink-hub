@@ -26,9 +26,9 @@
 
     // viewer
       const viewer = new Cesium.Viewer('cesiumContainer', {
-  imageryProvider: new Cesium.TileMapServiceImageryProvider({
-    url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-  }),
+imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+  url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+}),
   baseLayerPicker: false, 
   timeline: false,
   animation: false,
@@ -182,6 +182,7 @@ viewer.entities.add({
   </script>
 </body>
 </html>
+
 
 
 
